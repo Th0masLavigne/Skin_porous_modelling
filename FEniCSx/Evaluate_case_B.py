@@ -159,15 +159,6 @@ real_u = [1e-3*elem/2 for elem in real_u_]
 # real_u = np.linspace(0,1e-4,3)
 # time_list = np.linspace(0,0.05,3)
 num_steps = len(real_u)
-# for ii in range(len(time_list)):
-# 	if time_list[ii]>=145:
-# 		num_steps=ii
-# 		time_list=time_list[:num_steps]
-# 		theorical_u = theorical_u[:num_steps]
-# 		real_u = real_u[:num_steps]
-# 		RF_exp = RF_exp[:num_steps]
-# 		break	
-# 
 # Set time counter
 begin_t = time.time()
 # 
@@ -185,8 +176,6 @@ R = 48e-3
 zx,zy,zz = 1e-16, 1e-16, 1e-16# 
 center_y = zy
 # 
-# def du_(x):
-# 	return -R*np.ones_like(x[0])+np.sqrt((R*np.ones_like(x[0]))**2-(x[1]-center_y*np.ones_like(x[0]))**2)
 def du_y(x):
 	theta = x[1]/(R+x[2])*np.ones_like(x[0])
 	return -x[1]+(R+x[2])*np.sin(theta)
