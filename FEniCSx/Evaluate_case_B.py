@@ -156,8 +156,6 @@ RF_exp[:Nzeros]=np.zeros(Nzeros)
 # Scaling mm to m and half for symmetry
 theorical_u = [1e-3*elem/2 for elem in theorical_u_]
 real_u = [1e-3*elem/2 for elem in real_u_]
-# real_u = np.linspace(0,1e-4,3)
-# time_list = np.linspace(0,0.05,3)
 num_steps = len(real_u)
 # Set time counter
 begin_t = time.time()
@@ -195,6 +193,7 @@ with XDMFFile(MPI.COMM_WORLD, "mesh_tag.xdmf", "w") as xdmftag:
 		xdmftag.write_mesh(mesh)
 		xdmftag.write_meshtags(facet_tag)
 		xdmftag.write_meshtags(cell_tag)
+		# if version of fenicsx > 0.6.0
 		# xdmftag.write_meshtags(facet_tag, mesh.geometry)
 		# xdmftag.write_meshtags(cell_tag, mesh.geometry)
 
