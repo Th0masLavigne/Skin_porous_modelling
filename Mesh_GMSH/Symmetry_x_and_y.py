@@ -59,12 +59,7 @@ open_gmsh_result = True
 # 
 # Mesh parameters
 # 
-# lc_coarse = (Top_layer_thickness+Bottom_layer_thickness)/3
-# lc_inter = 1e-3
-# lc_hypoderm = 5e-4
-# lc_patch = 2.5e-4
-# Coarse for debug
-lc_coarse = 1e-2 #(Top_layer_thickness+Bottom_layer_thickness)/3
+lc_coarse = 1e-2
 lc_inter = 5e-3
 lc_hypoderm = 2e-3
 lc_patch = 1e-3
@@ -100,9 +95,7 @@ gdim = 3
 if mesh_comm.rank == model_rank:
 	gmsh.model.mesh.createGeometry()
 	# 
-	# top_offset        = gmsh.model.occ.addBox(zx, zy, zz+Bottom_layer_thickness, ROI_x/2+offset_x, ROI_y/2+offset_y, Top_layer_thickness)
 	top_offset        = gmsh.model.occ.addBox(zx, zy, zz+Bottom_layer_thickness, ROI_x/2+offset_x, np.pi*47e-3/2, Top_layer_thickness)
-	# bottom_offset     = gmsh.model.occ.addBox(zx, zy, zz, ROI_x/2+offset_x, ROI_y/2+offset_y, Bottom_layer_thickness)
 	bottom_offset     = gmsh.model.occ.addBox(zx, zy, zz, ROI_x/2+offset_x, np.pi*47e-3/2, Bottom_layer_thickness)
 	top_ROI           = gmsh.model.occ.addBox(zx, zy, zz+Bottom_layer_thickness, ROI_x/2, ROI_y/2, Top_layer_thickness)
 	bottom_ROI        = gmsh.model.occ.addBox(zx, zy, zz, ROI_x/2, ROI_y/2, Bottom_layer_thickness)
@@ -269,17 +262,6 @@ if mesh_comm.rank == model_rank:
 	gmsh.model.mesh.field.setNumber(roi_b, "DistMin", dit_min_ROI_b)
 	gmsh.model.mesh.field.setNumber(roi_b, "DistMax", dist_max_ROI_b)
 	# 
-	# Constraint concentration
-	# roi_lc_distance = gmsh.model.mesh.field.add("Distance")
-	# gmsh.model.mesh.field.setNumbers(roi_lc_distance, "FacesList", local_refine)
-	# # The next step is to use a threshold function vary the resolution from these surfaces in the following way:
-	# roi_lc = gmsh.model.mesh.field.add("Threshold")
-	# gmsh.model.mesh.field.setNumber(roi_lc, "IField", roi_lc_distance)
-	# gmsh.model.mesh.field.setNumber(roi_lc, "LcMin", lc_local)
-	# gmsh.model.mesh.field.setNumber(roi_lc, "LcMax", lc_coarse)
-	# gmsh.model.mesh.field.setNumber(roi_lc, "DistMin", dist_min_local_refine)
-	# gmsh.model.mesh.field.setNumber(roi_lc, "DistMax", dist_max_local_refine)
-	# 
 	# Keep the smallest mesh_size:
 	minimum = gmsh.model.mesh.field.add("Min")
 	gmsh.model.mesh.field.setNumbers(minimum, "FieldsList", [threshold,roi_l,roi_b]) # add other fields in the list if needed
@@ -319,11 +301,6 @@ if mesh_comm.rank == model_rank:
 	# maximum element size (for comparison with the equivalent code of FEniCS)
 	tdim      = mesh.topology.dim
 	num_cells = mesh.topology.index_map(tdim).size_local
-	# h         = dolfinx.cpp.mesh.h(mesh, tdim, range(num_cells))
-	# dh        = h.max()
-	# dh2       = h.min()
-	# if MPI.COMM_WORLD.rank == 0:
-	# 	print('dh_max=',dh, 'min',dh2)
 	# FOR DEBUG SAVE FIRST XDMF
 	with XDMFFile(MPI.COMM_WORLD, directory_mesh+'/'+mesh_filename+"_tag.xdmf", "w") as xdmftag:
 			xdmftag.write_mesh(mesh)
