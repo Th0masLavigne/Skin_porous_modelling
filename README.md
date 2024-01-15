@@ -4,7 +4,7 @@ This repository contains the codes used to generate the results presented in *La
 
 
 ## Archive organization
-- [Experimental Data](./Experimental_Data/) contains the [excel file](./Experimental_Data/Healthy_skin.xlsx) with the imposed displacement and measured force
+- [Experimental Data](./Experimental_Data/) contains the [excel file](./Experimental_Data/Healthy_skin.xlsx) with the imposed displacement and measured force acquired with the in-house device presented in *Jacquet et al.*[^3].
 - Mesh_gmsh code
 - FEniCSx code
 
