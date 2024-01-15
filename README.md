@@ -1,10 +1,10 @@
 # *In vivo* data-driven poromechanical modelling of the apparent viscoelasticity of human skin under tension
 
-This repository contains the codes used to generate the example presented in *Lavigne et al.*[^1]. This paper proposes a proof of concept for a poroelastic model to account to simulate the mechanical behaviour of human skin. A two-layer model has been considered and a calibration procedure has been performed to reproduce the apparent viscoelasticity of *in vivo* human skin, using a porous media approach.
+This repository contains the codes used to generate the results presented in *Lavigne et al.*[^1]. This paper proposes a proof of concept for a poroelastic model to account to simulate the mechanical behaviour of human skin. A two-layer model has been considered and a calibration procedure has been performed to reproduce the apparent viscoelasticity of *in vivo* human skin, using a porous media approach.
 
 
 ## Archive organization
-- Experimental Data
+- [Experimental Data](./Experimental_Data/)
 - Mesh_gmsh code
 - FEniCSx code
 
