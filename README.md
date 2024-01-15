@@ -37,6 +37,8 @@ alt="Experiment">
 
 ## Geometry
 
+A curved two-layer (cutis and subcutis) geometry has been considered. The dimensions were increased to limit the effects of the boundary conditions.
+
 <img 
     style="display: block; 
            margin-left: auto;
@@ -47,10 +49,10 @@ alt="Geometry">
 </img>
 
 ## Model
-ref a l'ancien article
-*Lavigne et al.*[^2]
+The porous model is presented in *Lavigne et al.*[^1] and *Lavigne et al.*[^2].
 
-##
+ $$   \left(\frac{\varepsilon^l_i}{K^l_i}+\frac{1-\varepsilon^l_i}{K^s_i} \right)\frac{\mathrm{D}^s p^l}{\mathrm{D}\text{t}}+\nabla\cdot\mathbf{v} -\nabla\cdot\left(\frac{k^\varepsilon_i}{\mu^l}\mathbf{\nabla}p^l\right) = 0~\text{on }\Omega_i,~i\in[1,2]$$
+ $$ \mathbf{\nabla}\cdot\mathbf{t}^{\text{tot}} = 0~\text{on }\Omega_i,~i\in[1,2]$$
 
 
 
