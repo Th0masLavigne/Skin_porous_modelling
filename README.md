@@ -24,7 +24,7 @@ docker run -ti -v $(pwd):/home/fenicsx/shared -w /home/fenicsx/shared th0maslavi
 
 
 ## Experiment
-The aim is to reproduce a traction-relaxation experiment carried out with the in-house device presented in *Jacquet et al.*[^3]. 
+The aim is to reproduce a traction-relaxation experiment carried out with the in-house device presented in *Jacquet et al.*[^3]. The experiment consists in four loading-sustaining-unloading cycles of 8mm amplitude. 
 
 <img 
     style="display: block; 
