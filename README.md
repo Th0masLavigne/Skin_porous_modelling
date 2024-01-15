@@ -49,9 +49,10 @@ alt="Geometry">
 </img>
 
 ## Model
-The porous model is presented in *Lavigne et al.*[^1] and *Lavigne et al.*[^2].
+The porous model is presented in *Lavigne et al.*[^1] and *Lavigne et al.*[^2]. The governing equations are recalled here-after.
 
  $$   \left(\frac{\varepsilon^l_i}{K^l_i}+\frac{1-\varepsilon^l_i}{K^s_i} \right)\frac{\mathrm{D}^s p^l}{\mathrm{D}\text{t}}+\nabla\cdot\mathbf{v} -\nabla\cdot\left(\frac{k^\varepsilon_i}{\mu^l}\mathbf{\nabla}p^l\right) = 0~\text{on }\Omega_i,~i\in[1,2]$$
+
  $$ \mathbf{\nabla}\cdot\mathbf{t}^{\text{tot}} = 0~\text{on }\Omega_i,~i\in[1,2]$$
 
 
