@@ -4,7 +4,7 @@ This repository contains the codes used to generate the results presented in *La
 
 
 ## Archive organization
-- [Experimental Data](./Experimental_Data/)
+- [Experimental Data](./Experimental_Data/) contains the [excel file](Healthy_skin.xlsx) with the imposed displacement and measured force
 - Mesh_gmsh code
 - FEniCSx code
 
@@ -38,3 +38,4 @@ ref a l'ancien article
 
 [^1]: T. Lavigne, S. Urcun, E. Jacquet, J. Chambert, A. Elouneg, C. Suarez, S.P.A. Bordas, G. Sciumè, PY. Rohan, *In vivo* data-driven poromechanical modelling of the apparent viscoelasticity of human skin under tension
 [^2]: T. Lavigne, S. Urcun, P-Y. Rohan, G. Sciumè, D. Baroli, S.P.A. Bordas, Single and bi-compartment poro-elastic model of perfused biological soft tissues: FEniCSx implementation and tutorial: implementation in FEniCSx, https://doi.org/10.1016/j.jmbbm.2023.105902
+[^3]: E. Jacquet, S. Joly, J. Chambert, K. Rekik, P. Sandoz, Ultra-light extensometer for the assessment of the mechanical properties of the human skin in vivo ,https://doi.org/10.1111/srt.12367
