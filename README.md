@@ -5,8 +5,8 @@ This repository contains the codes used to generate the results presented in *La
 
 ## Archive organization
 - [Experimental Data](./Experimental_Data/) contains the [excel file](./Experimental_Data/Healthy_skin.xlsx) with the imposed displacement and measured force acquired with the in-house device presented in *Jacquet et al.*[^3].
-- Mesh_gmsh code
-- FEniCSx code
+- [Mesh GMSH](./Mesh_GMSH/) contains the code used to generate the labelled mesh before curvature. 
+- [FEniCSx](./FEniCSx/) contains the codes used for calibration and evaluation of the model.
 
 ## Versions
 give versions of GMSH & FEniCSx
