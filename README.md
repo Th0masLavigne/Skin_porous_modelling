@@ -24,11 +24,27 @@ docker run -ti -v $(pwd):/home/fenicsx/shared -w /home/fenicsx/shared th0maslavi
 
 
 ## Experiment
+The aim is to reproduce a traction-relaxation experiment carried out with the in-house device presented in *Jacquet et al.*[^3]. 
 
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 30%;"
+src=https://github.com/Th0masLavigne/Skin_porous_modelling/blob/main/images/Capture%20d'%C3%A9cran%202024-01-15%20153231.png
+alt="Experiment">
+</img>
 
 ## Geometry
 
-
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 30%;"
+src=https://github.com/Th0masLavigne/Skin_porous_modelling/blob/main/images/Capture%20d'%C3%A9cran%202024-01-15%20153331.png
+alt="Geometry">
+</img>
 
 ## Model
 ref a l'ancien article
