@@ -30,7 +30,7 @@ The aim is to reproduce a traction-relaxation experiment carried out with the in
     style="display: block; 
            margin-left: auto;
            margin-right: auto;
-           width: 30%;"
+           width: 50%;"
 src=https://github.com/Th0masLavigne/Skin_porous_modelling/blob/main/images/exp.png
 alt="Experiment">
 </img>
@@ -41,7 +41,7 @@ alt="Experiment">
     style="display: block; 
            margin-left: auto;
            margin-right: auto;
-           width: 30%;"
+           width: 50%;"
 src=https://github.com/Th0masLavigne/Skin_porous_modelling/blob/main/images/geom.png
 alt="Geometry">
 </img>
