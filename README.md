@@ -9,19 +9,12 @@ This repository contains the codes used to generate the results presented in *La
 - [FEniCSx](./FEniCSx/) contains the codes used for calibration and evaluation of the model.
 
 ## Versions
-give versions of GMSH & FEniCSx
-mettre lien vers sites
-commande docker ?
-parallel cpmputation
-NLOPT
-
 
 The version used of FEniCSx is v0.5.2. [Dockerfile](Dockerfile) and built images are made available. To pull the image, after having installed docker, run `th0maslavigne/dolfinx:v0.5.2`. Otherwise the image can be built by running `docker build .` in the folder of the DockerFile. Then the container can be interactively executed through the command below:
 
 ```sh
 docker run -ti -v $(pwd):/home/fenicsx/shared -w /home/fenicsx/shared th0maslavigne/dolfinx:v0.5.2
 ```
-
 
 ## Experiment
 The aim is to reproduce a traction-relaxation experiment carried out with the in-house device presented in *Jacquet et al.*[^3]. The experiment consists in four loading-sustaining-unloading cycles of 8mm amplitude. 
