@@ -1,27 +1,6 @@
 # Thomas Lavigne
 # 21-03-2024
 # 
-# README
-print("""
-Reproduction of the extention test of the skin
-Previously performed by Chambert et al.
-
-An updated Lagrangian approach is followed to get
-the relevant operators defined in the current configuration.
-
-The Nanson's formula is used to get the Cauchy stress tensor 
-from PK1.
-
-The weak form is defined as in 10.1016/j.jmbbm.2023.105902.
-
-The Darcy's law is considered to estimate the fluid velocity.
-
-Variable porosity is introduced.
-
-A bi-layer geometry generated and tagged in GMSH is used.
-
-Functions are defined in functions.py for the ease of reading
-""")
 # 
 # 
 from functions import *
@@ -47,7 +26,7 @@ import math
 ##############################################################
 # 
 # Specify the file path and sheet name
-file_path  = '../Healthy_skin.xlsx'
+file_path  = '../Experimental_Data/Healthy_skin.xlsx'
 sheet_name = 'Test B - Sain'
 # 
 time_second, _ , _ , _ , _ , _ , displacement_milli_meter, force_newton = read_excel_sheet2(file_path, sheet_name)
@@ -83,7 +62,6 @@ RF_exp[:Nzeros]=np.zeros(Nzeros)
 # 
 # Identify the number of steps for the computation
 num_steps = len(real_u_m)
-# num_steps = time_list.index(25)
 #
 #
 ##############################################################
@@ -101,7 +79,7 @@ t=0
 #                   Load the Geometry from GMSH              #
 #------------------------------------------------------------#
 # 
-filename = "../Mesh_SKIN.msh"
+filename = "../Mesh_GMSH/Mesh_SKIN.msh"
 mesh, cell_tag, facet_tag = gmshio.read_from_msh(filename, MPI.COMM_WORLD, 0, gdim=3)
 # The mesh has initially been created as a plane mesh. It is deformed to its curved 
 # state here-after
@@ -166,13 +144,8 @@ tensor_space = FunctionSpace(mesh, tensor_elem)
 #                   Material Definition                      #
 #------------------------------------------------------------#
 # 
-# x0=[4.561669864588759, 0.9557826778826857, 0.9428584320870872, 5.029994538924334]
-# 
-# x0 = [4.561669864588759, 0.9557826778826857, 0.9428584320870872, 5.029994538924334]
 # Solid scaffold
 # Young Moduli [Pa]
-# E_cutis               = Constant(mesh, ScalarType(x0[0]*150e3)) 
-# E_subcutis            = Constant(mesh, ScalarType(x0[1]*50e3)) 
 E_cutis               = Constant(mesh, ScalarType(684250.4796883139)) 
 E_subcutis            = Constant(mesh, ScalarType(47789.133894134284))  
 # Possion's ratios [-]
@@ -187,8 +160,6 @@ viscosity             = Constant(mesh, ScalarType(5e-3))
 porosity_cutis        = Constant(mesh, ScalarType(0.2))
 porosity_subcutis     = Constant(mesh, ScalarType(0.4))
 # Intrinsic permeabilitty [m^2]
-# permeability_cutis    = Constant(mesh, ScalarType(x0[2]*1e-14)) 
-# permeability_subcutis = Constant(mesh, ScalarType(x0[3]*1e-13)) 
 permeability_cutis    = Constant(mesh, ScalarType(9.428584320870872e-15)) 
 permeability_subcutis = Constant(mesh, ScalarType(5.029994538924334e-13)) 
 # Fluid bulk modulus [Pa]
@@ -199,7 +170,6 @@ Ks                    = Constant(mesh, ScalarType(1e10))
 beta                  = Constant(mesh, ScalarType(1))
 # 
 if MPI.COMM_WORLD.rank == 0:
-		# print(f"Auxiliary parameter for cutis : E={x0[0]}, k={x0[2]} ; Auxiliary parameter for subcutis E= {x0[1]}, k= {x0[3]}")
 		print(f"cutis : E={E_cutis.value}, k={permeability_cutis.value}; subcutis E={E_subcutis.value}, k={permeability_subcutis.value}")
 # Map the porosity at the current time step
 porosity                               = Function(DG0_space)
@@ -295,17 +265,14 @@ sigma_expr = sigma_expr        = Expression(Cauchy(mesh,Xn.sub(0)+X0.sub(0)*dt,l
 # 
 # Compute the reaction Force
 N                 = Constant(mesh, np.asarray(((1.0, 0.0,0.0),(0.0, 0.0,0.0),(0.0, 0.0,0.0))))
-# RF_expr           = form(inner(sigma_n-beta*Xn.sub(1)*Identity(mesh.geometry.dim),N)*ds(1))
-# RF_expr           = form(inner(Cauchy(mesh,Xn.sub(0)+X0.sub(0)*dt,lambda_m,mu)-beta*Xn.sub(1)*Identity(mesh.geometry.dim),N)*ds(1))
 RF_expr           = form(inner(Cauchy(mesh,Xn.sub(0),lambda_m,mu)-beta*Xn.sub(1)*Identity(mesh.geometry.dim),N)*ds(1))
 # 
 # Compute the solid deformation increment
 deformation_du_expr = Expression(sym(grad(X0.sub(0)*dt)), tensor_space.element.interpolation_points())
 # Compute the total stress
-# sigma_tot_expr    = Expression(Cauchy(mesh,Xn.sub(0)+X0.sub(0)*dt,lambda_m,mu)-beta*Xn.sub(1)*Identity(mesh.geometry.dim), tensor_space.element.interpolation_points())
 sigma_tot_expr    = Expression(Cauchy(mesh,Xn.sub(0),lambda_m,mu)-beta*Xn.sub(1)*Identity(mesh.geometry.dim), tensor_space.element.interpolation_points())
 # 
-# Update of the porosity (ask ref to S Urcun)
+# Update of the porosity
 poro_expr         = Expression(porosity_n + (1-porosity_n)*div((X0.sub(0))*dt), DG0_space.element.interpolation_points())
 # 
 # Update the fluid velocity (-k/(mu epsilon) grad(p_n) + v^s)

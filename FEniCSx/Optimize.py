@@ -26,7 +26,7 @@ import math
 ##############################################################
 # 
 # Specify the file path and sheet name
-file_path  = '../Healthy_skin.xlsx'
+file_path  = '../Experimental_Data/Healthy_skin.xlsx'
 sheet_name = 'Test B - Sain'
 # 
 time_second, _ , displacement_milli_meter, force_newton = read_excel_sheet(file_path, sheet_name)
@@ -82,7 +82,7 @@ def problem_opti(param, gradient):
 	#                   Load the Geometry from GMSH              #
 	#------------------------------------------------------------#
 	# 
-	filename = "../Mesh_SKIN.msh"
+	filename = "../Mesh_GMSH/Mesh_SKIN.msh"
 	mesh, cell_tag, facet_tag = gmshio.read_from_msh(filename, MPI.COMM_WORLD, 0, gdim=3)
 	# The mesh has initially been created as a plane mesh. It is deformed to its curved 
 	# state here-after
@@ -230,7 +230,6 @@ def problem_opti(param, gradient):
 	# 
 	# Compute the reaction Force
 	N                 = Constant(mesh, np.asarray(((1.0, 0.0,0.0),(0.0, 0.0,0.0),(0.0, 0.0,0.0))))
-	# RF_expr           = form(inner(Cauchy(mesh,Xn.sub(0)+X0.sub(0)*dt,lambda_m,mu)-beta*Xn.sub(1)*Identity(mesh.geometry.dim),N)*ds(1))
 	RF_expr           = form(inner(Cauchy(mesh,Xn.sub(0),lambda_m,mu)-beta*Xn.sub(1)*Identity(mesh.geometry.dim),N)*ds(1))
 	# 
 	# Update of the porosity (ask ref to S Urcun)
