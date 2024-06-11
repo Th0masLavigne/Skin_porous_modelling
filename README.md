@@ -19,6 +19,7 @@ docker run -ti -v $(pwd):/home/fenicsx/shared -w /home/fenicsx/shared th0maslavi
 ## Experiment
 The aim is to reproduce a traction-relaxation experiment carried out with the in-house device presented in *Jacquet et al.*[^3]. The experiment consists in four loading-sustaining-unloading cycles of 8mm amplitude. 
 
+<p align="center">
 <img 
     style="display: block; 
            margin-left: auto;
@@ -27,11 +28,13 @@ The aim is to reproduce a traction-relaxation experiment carried out with the in
 src=https://github.com/Th0masLavigne/Skin_porous_modelling/blob/main/images/exp.png
 alt="Experiment">
 </img>
+</p>
 
 ## Geometry
 
 A curved two-layer (cutis and subcutis) geometry has been considered. The dimensions were increased to limit the effects of the boundary conditions.
 
+<p align="center">
 <img 
     style="display: block; 
            margin-left: auto;
@@ -40,6 +43,7 @@ A curved two-layer (cutis and subcutis) geometry has been considered. The dimens
 src=https://github.com/Th0masLavigne/Skin_porous_modelling/blob/main/images/geom.png
 alt="Geometry">
 </img>
+</p>
 
 ## Model
 The porous model is presented in *Lavigne et al.*[^1] and *Lavigne et al.*[^2]. The governing equations are recalled here-after.
