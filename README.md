@@ -10,7 +10,7 @@ This repository contains the codes used to generate the results presented in *La
 
 ## Versions
 
-The version used of FEniCSx is v0.5.2. [Dockerfile](Dockerfile) and built images are made available. To pull the image, after having installed docker, run `th0maslavigne/dolfinx:v0.5.2`. Otherwise the image can be built by running `docker build .` in the folder of the DockerFile. Then the container can be interactively executed through the command below:
+The version used of FEniCSx is v0.5.2 (and is compatible with 0.7 versions). [Dockerfile](Dockerfile) and built images are made available. To pull the image, after having installed docker, run `th0maslavigne/dolfinx:v0.5.2`. Otherwise the image can be built by running `docker build .` in the folder of the DockerFile. Then the container can be interactively executed through the command below:
 
 ```sh
 docker run -ti -v $(pwd):/home/fenicsx/shared -w /home/fenicsx/shared th0maslavigne/dolfinx:v0.5.2
@@ -51,6 +51,6 @@ The porous model is presented in *Lavigne et al.*[^1] and *Lavigne et al.*[^2]. 
 
 
 
-[^1]: T. Lavigne, S. Urcun, E. Jacquet, J. Chambert, A. Elouneg, C. Suarez, S.P.A. Bordas, G. Sciumè, PY. Rohan, *In vivo* data-driven poromechanical modelling of the apparent viscoelasticity of human skin under tension
+[^1]: T. Lavigne, S. Urcun, E. Jacquet, J. Chambert, A. Elouneg, C. Suarez, S.P.A. Bordas, G. Sciumè, PY. Rohan, Poromechanical modelling of the time-dependent response of *in vivo* human skin during extension
 [^2]: T. Lavigne, S. Urcun, P-Y. Rohan, G. Sciumè, D. Baroli, S.P.A. Bordas, Single and bi-compartment poro-elastic model of perfused biological soft tissues: FEniCSx implementation and tutorial: implementation in FEniCSx, https://doi.org/10.1016/j.jmbbm.2023.105902
 [^3]: E. Jacquet, S. Joly, J. Chambert, K. Rekik, P. Sandoz, Ultra-light extensometer for the assessment of the mechanical properties of the human skin in vivo ,https://doi.org/10.1111/srt.12367
