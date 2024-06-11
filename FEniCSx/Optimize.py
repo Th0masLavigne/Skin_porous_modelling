@@ -29,7 +29,7 @@ import math
 file_path  = '../Experimental_Data/Healthy_skin.xlsx'
 sheet_name = 'Test B - Sain'
 # 
-time_second, _ , displacement_milli_meter, force_newton = read_excel_sheet(file_path, sheet_name)
+time_second, displacement_milli_meter, force_newton = read_excel_sheet(file_path, sheet_name)
 # 
 # Filter the noisy reaction force : 
 n0 = time_second.index(30)

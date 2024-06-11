@@ -104,9 +104,8 @@ def read_excel_sheet(file_path, sheet_name):
 	column1 = df.iloc[:, 0].tolist()
 	column2 = df.iloc[:, 1].tolist()
 	column3 = df.iloc[:, 2].tolist()
-	column4 = df.iloc[:, 3].tolist()
 	# Return the four lists
-	return column1, column2, column3, column4
+	return column1, column2, column3
 # 
 # 
 def read_excel_sheet2(file_path, sheet_name):
